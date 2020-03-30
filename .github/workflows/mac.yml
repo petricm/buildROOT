@@ -14,9 +14,9 @@ jobs:
         mkdir build
         mkdir root
         cd build
-        cmake -GNinja -DCMAKE_INSTALL_PREFIX=../root -Dcxx17=ON ../root-6.20.02
-        ninja
-        ninja install
+        cmake -DCMAKE_INSTALL_PREFIX=../root -Dcxx17=ON ../root-6.20.02
+        make -j4
+        make -j4 install
         cd ..
         tar zcf root.tgz root/
     - uses: actions/upload-artifact@v1
