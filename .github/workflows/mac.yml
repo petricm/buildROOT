@@ -1,0 +1,17 @@
+name: mac
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: macos-10.15
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build ROOT
+      run: |
+        curl -O https://root.cern/download/root_v6.20.02.source.tar.gz
+        tar xf root_v6.20.02.source.tar.gz
+        mkdir build
+        mkdir root
+        cd build
+        cmake -DCMAKE_INSTALL_PREFIX=../root ../root-6.20.02
